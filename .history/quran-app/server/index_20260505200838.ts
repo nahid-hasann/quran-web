@@ -10,14 +10,17 @@ const app = new Hono();
 
 
 // Database file-er absolute path toiri kora
-const dbPath = path.join(process.cwd(), 'quran.db');
+const dbPath = path.resolve(process.cwd(), 'quran.db');
 
-// Terminal-e check korar jonno print koro path-ta ki asche
-console.log("Database path check:", dbPath);
+console.log("-----------------------------------------");
+console.log("DATABASE PATH CHECK:", dbPath);
 
 if (!fs.existsSync(dbPath)) {
     console.error("❌ ERROR: Database file-ta ei folder-e nai!");
+} else {
+    console.log("✅ SUCCESS: Database file khunje paoa geche.");
 }
+console.log("-----------------------------------------");
 
 const db = new Database(dbPath);
 

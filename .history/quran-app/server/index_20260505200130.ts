@@ -3,20 +3,16 @@ import { cors } from 'hono/cors';
 import { Database } from "bun:sqlite";
 import { handle } from 'hono/vercel';
 import path from 'path'; // Eita top-e add koro
-import fs from 'fs';
 
 const app = new Hono();
 // const db = new Database("quran.db");
 
 
-// Database file-er absolute path toiri kora
-const dbPath = path.join(process.cwd(), 'quran.db');
+const dbPath = path.resolve(process.cwd(), 'quran.db');
 
-// Terminal-e check korar jonno print koro path-ta ki asche
-console.log("Database path check:", dbPath);
-
+// Database file-ta ashole oi path-e ache kina check koro
 if (!fs.existsSync(dbPath)) {
-    console.error("❌ ERROR: Database file-ta ei folder-e nai!");
+    console.error("DATABASE NOT FOUND AT:", dbPath);
 }
 
 const db = new Database(dbPath);
