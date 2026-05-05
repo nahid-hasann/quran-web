@@ -15,7 +15,8 @@ export default function SurahSidebar() {
     const [searchQuery, setSearchQuery] = useState("");
 
     useEffect(() => {
-        fetch("/api/surahs")
+        const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
+        fetch(`${API_URL}/api/surahs`)
             .then((res) => res.json())
             .then((data) => {
                 // Backend array pathale direct set koro, nahole property check koro

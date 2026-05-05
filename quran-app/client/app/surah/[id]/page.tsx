@@ -69,12 +69,13 @@ export default function SurahPage() {
 
     useEffect(() => {
         if (id) {
-            fetch(`/api/surah/${id}`)
+            const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
+            // ⚠️ Eikhane /api/surahs chilo, oitake /api/surah/${id} korte hobe
+            fetch(`${API_URL}/api/surah/${id}`)
                 .then((res) => res.json())
                 .then((data) => setSurah(data))
                 .catch(err => console.error("Fetch error:", err));
         }
-        // Component unmount hole audio bondho kora
         return () => {
             if (audioRef.current) audioRef.current.pause();
         };

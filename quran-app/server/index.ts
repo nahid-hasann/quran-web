@@ -6,7 +6,11 @@ import { handle } from 'hono/vercel';
 const app = new Hono();
 const db = new Database("quran.db");
 
-app.use('/api/*', cors());
+
+
+// app initialize korar thik porei eita daw
+app.use('/api/*', cors())
+
 
 // Sob Surah list
 app.get('/api/surahs', (c) => {
@@ -37,7 +41,7 @@ app.get('/api/search', (c) => {
     return c.json(results);
 });
 
-console.log("Bun Hono Server is running on http://localhost:5000");
+console.log("Bun Hono Server is running on http://localhost:5001");
 
 export const GET = handle(app);
 export const POST = handle(app);
@@ -48,3 +52,4 @@ export default {
     port: 5001,
     fetch: app.fetch,
 };
+
