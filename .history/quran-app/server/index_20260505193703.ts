@@ -2,16 +2,13 @@ import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { Database } from "bun:sqlite";
 import { handle } from 'hono/vercel';
-import path from 'path'; // Eita top-e add koro
 
 const app = new Hono();
-// const db = new Database("quran.db");
+const db = new Database("quran.db");
+import path from 'path'; // Eita top-e add koro
 
-
-const dbPath = path.resolve(process.cwd(), 'quran.db');
+const dbPath = path.resolve(process.cwd(), 'quran.db'); // Eita absolute path nibe
 const db = new Database(dbPath);
-
-
 
 
 // app initialize korar thik porei eita daw

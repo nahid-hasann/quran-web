@@ -2,21 +2,11 @@ import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { Database } from "bun:sqlite";
 import { handle } from 'hono/vercel';
-import path from 'path'; // Eita top-e add koro
 
 const app = new Hono();
-// const db = new Database("quran.db");
+const db = new Database("quran.db");
 
-
-const dbPath = path.resolve(process.cwd(), 'quran.db');
-const db = new Database(dbPath);
-
-
-
-
-// app initialize korar thik porei eita daw
-app.use('/api/*', cors())
-
+app.use('/api/*', cors());
 
 // Sob Surah list
 app.get('/api/surahs', (c) => {
@@ -47,7 +37,7 @@ app.get('/api/search', (c) => {
     return c.json(results);
 });
 
-console.log("Bun Hono Server is running on http://localhost:5001");
+console.log("Bun Hono Server is running on http://localhost:5000");
 
 export const GET = handle(app);
 export const POST = handle(app);

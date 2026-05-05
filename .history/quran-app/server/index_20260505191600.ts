@@ -2,20 +2,16 @@ import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { Database } from "bun:sqlite";
 import { handle } from 'hono/vercel';
-import path from 'path'; // Eita top-e add koro
+import { cors } from 'hono/cors'
 
 const app = new Hono();
-// const db = new Database("quran.db");
-
-
-const dbPath = path.resolve(process.cwd(), 'quran.db');
-const db = new Database(dbPath);
-
+const db = new Database("quran.db");
 
 
 
 // app initialize korar thik porei eita daw
 app.use('/api/*', cors())
+app.use('/api/*', cors());
 
 
 // Sob Surah list

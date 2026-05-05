@@ -5,12 +5,9 @@ import { handle } from 'hono/vercel';
 import path from 'path'; // Eita top-e add koro
 
 const app = new Hono();
-// const db = new Database("quran.db");
+const db = new Database("quran.db");
 
-
-const dbPath = path.resolve(process.cwd(), 'quran.db');
-const db = new Database(dbPath);
-
+const dbPath = path.resolve(process.cwd(), 'quran.db'); // Eita absolute path nibe
 
 
 
