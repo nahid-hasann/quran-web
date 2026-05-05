@@ -1,6 +1,7 @@
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { Database } from "bun:sqlite";
+import { handle } from 'hono/vercel';
 
 const app = new Hono();
 const db = new Database("quran.db");
@@ -37,6 +38,11 @@ app.get('/api/search', (c) => {
 });
 
 console.log("Bun Hono Server is running on http://localhost:5000");
+
+export const GET = handle(app);
+export const POST = handle(app);
+export const PUT = handle(app);
+export const DELETE = handle(app);
 
 export default {
     port: 5001,
