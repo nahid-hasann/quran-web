@@ -14,6 +14,7 @@ const db = new Database(dbPath);
 
 
 
+// app initialize korar thik porei eita daw
 app.use('/api/*', cors())
 
 
