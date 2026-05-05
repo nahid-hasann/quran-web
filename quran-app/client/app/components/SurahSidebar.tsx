@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 interface Surah {
+    id: number; // Eita add koro
     number: number;
     name: string;
     englishName: string;
